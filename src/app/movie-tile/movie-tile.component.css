@@ -1,0 +1,11 @@
+.tile:hover {
+  cursor: pointer;
+}
+
+.genre-gap {
+  gap: 3px;
+}
+
+.genre-placeholder {
+  height: 20px;
+}

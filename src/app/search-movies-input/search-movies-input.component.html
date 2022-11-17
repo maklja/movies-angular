@@ -1,0 +1,11 @@
+<form #searchMoviesForm="ngForm" autocomplete="off">
+  <input
+    type="text"
+    class="form-control search-input"
+    id="searchValue"
+    name="value"
+    placeholder="Search movies"
+    [(ngModel)]="value"
+    (ngModelChange)="this.valueDebouncedUpdate.next($event)"
+  />
+</form>

@@ -1,0 +1,26 @@
+<div class="card tile" *ngIf="movie" (click)="onClick()">
+  <div class="card-header text-center text-truncate">
+    {{ movie.title }}
+  </div>
+  <img
+    [src]="createImageUrl(movie.posterPath, movie.backdropPath)"
+    class="img-thumbnail"
+    [alt]="movie.title"
+  />
+  <div class="card-body">
+    <div class="d-flex flex-wrap genre-gap">
+      <ng-container *ngFor="let genreId of movie.genreIds">
+        <span
+          class="badge text-bg-secondary"
+          *ngIf="!genresLoading; else genresPlaceholder"
+        >
+          {{ retrieveGenre(genreId)?.name }}
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #genresPlaceholder>
+  <span class="placeholder col-3 genre-placeholder"></span>
+</ng-template>
