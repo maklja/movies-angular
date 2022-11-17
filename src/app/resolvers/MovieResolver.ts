@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { MovieDetailResponse } from '../entities/response/MovieDetailResponse';
-import { MovieService } from '../services/movie.service';
+import { catchError, EMPTY, Observable, of } from 'rxjs';
+import { MovieService } from '../movie/data-access/movie.service';
+import { MovieDetailResponse } from '../movie/data-access/MovieDetailResponse';
 
 @Injectable({ providedIn: 'root' })
 export class MovieResolver implements Resolve<MovieDetailResponse> {
@@ -11,9 +11,15 @@ export class MovieResolver implements Resolve<MovieDetailResponse> {
   resolve(route: ActivatedRouteSnapshot): Observable<MovieDetailResponse> {
     const movieId = parseInt(route.paramMap.get('id') ?? '');
     if (isNaN(movieId)) {
-      // TODO 404
+      this.router.navigate(['not-found']);
+      return EMPTY;
     }
 
-    return this.movieService.retrieveMovieById(movieId);
+    return this.movieService.retrieveMovieById(movieId).pipe(
+      catchError(() => {
+        this.router.navigate(['not-found']);
+        return EMPTY;
+      })
+    );
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { GenreResponse } from '../entities/response';
+import { GenreResponse } from './GenreResponse';
 
 @Injectable({
   providedIn: 'root',

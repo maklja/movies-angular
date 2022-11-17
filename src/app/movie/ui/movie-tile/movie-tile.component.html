@@ -1,4 +1,4 @@
-<div class="card tile" *ngIf="movie" (click)="onClick()">
+<div class="card tile" *ngIf="movie" (click)="onClick($event)">
   <div class="card-header text-center text-truncate">
     {{ movie.title }}
   </div>

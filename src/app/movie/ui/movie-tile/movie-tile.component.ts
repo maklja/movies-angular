@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GenreResponse, MovieResponse } from '../entities/response';
-import { GenreService } from '../services/genre.service';
-import { ImageService } from '../services/image.service';
+import { GenreService } from '../../data-access/genre.service';
+import { ImageService } from '../../../shared/data-access/image.service';
+import { MovieResponse } from '../../data-access/MovieResponse';
+import { GenreResponse } from '../../data-access/GenreResponse';
 
 @Component({
   selector: 'app-movie-tile[movie]',
@@ -36,7 +37,8 @@ export class MovieTileComponent implements OnInit {
     });
   }
 
-  onClick() {
+  onClick(e: MouseEvent) {
+    e.stopPropagation();
     if (!this.movie) {
       return;
     }

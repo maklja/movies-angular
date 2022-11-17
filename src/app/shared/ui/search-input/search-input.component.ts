@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-search-movies-input',
-  templateUrl: './search-movies-input.component.html',
-  styleUrls: ['./search-movies-input.component.css'],
+  selector: 'app-search-input',
+  templateUrl: './search-input.component.html',
+  styleUrls: ['./search-input.component.css'],
 })
-export class SearchMoviesInputComponent implements OnInit {
+export class SearchInputComponent implements OnInit {
   valueDebouncedUpdate = new Subject<string>();
   @Input() value = '';
   @Output() valueChange = new EventEmitter();

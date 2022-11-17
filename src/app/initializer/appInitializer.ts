@@ -1,4 +1,4 @@
-import { ConfigurationService } from '../services/configuration.service';
+import { ConfigurationService } from '../shared/data-access/configuration.service';
 
 export const appInitializerFactory =
   (configService: ConfigurationService) => () =>

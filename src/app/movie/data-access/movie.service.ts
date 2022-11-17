@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MovieResponse, Pageable } from '../entities/response';
-import { MovieDetailResponse } from '../entities/response/MovieDetailResponse';
+import { MovieDetailResponse } from './MovieDetailResponse';
+import { MovieResponse } from './MovieResponse';
+import { Pageable } from './Pageable';
 
 @Injectable({
   providedIn: 'root',

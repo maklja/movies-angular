@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { MoviesListComponent } from './movies-list/movies-list.component';
+import { MovieDetailsComponent } from './movie/feature/movie-details/movie-details.component';
+import { MoviesListComponent } from './movie/feature/movies-list/movies-list.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { MovieResolver } from './resolvers/MovieResolver';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

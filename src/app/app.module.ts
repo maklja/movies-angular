@@ -1,36 +1,32 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MoviesListComponent } from './movies-list/movies-list.component';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { CamelCaseInterceptor } from './interceptors/camel-case.interceptor';
 import { appInitializerFactory } from './initializer/appInitializer';
-import { ConfigurationService } from './services/configuration.service';
-import { MovieTileComponent } from './movie-tile/movie-tile.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { SearchMoviesInputComponent } from './search-movies-input/search-movies-input.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { ConfigurationService } from './shared/data-access/configuration.service';
+import { PaginationModule } from './shared/ui/pagination/pagination.module';
+import { SearchInputModule } from './shared/ui/search-input/search-input.module';
+import { MovieListModule } from './movie/feature/movies-list/movies-list.module';
+import { MovieDetailsModule } from './movie/feature/movie-details/movie-details.module';
+import { NotFoundModule } from './not-found/not-found.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MoviesListComponent,
-    MovieTileComponent,
-    PaginationComponent,
-    SearchMoviesInputComponent,
-    MovieDetailsComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule,
     FormsModule,
+    BrowserModule,
+    PaginationModule,
+    SearchInputModule,
+    MovieListModule,
+    MovieDetailsModule,
+    NotFoundModule,
   ],
   providers: [
     {

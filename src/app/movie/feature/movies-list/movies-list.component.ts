@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { delay, take } from 'rxjs';
-import { MovieResponse, Pageable } from '../entities/response';
-import { MovieService } from '../services/movie.service';
+import { MovieService } from '../../data-access/movie.service';
+import { MovieResponse } from '../../data-access/MovieResponse';
+import { Pageable } from '../../data-access/Pageable';
 
 @Component({
   selector: 'app-movies-list',
@@ -46,7 +47,9 @@ export class MoviesListComponent implements OnInit {
   }
 
   onTileClicked(movie: MovieResponse) {
-    this.router.navigate([movie.id], { relativeTo: this.activatedRoute });
+    this.router.navigate([movie.id], {
+      relativeTo: this.activatedRoute,
+    });
   }
 
   private updateQueryParameters(page = 1) {
